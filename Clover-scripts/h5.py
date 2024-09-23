@@ -35,20 +35,22 @@ navigate_wait(x=0, y=0, z=1, frame_id='body', auto_arm=True)
 print('Takeoff done!')
 
 try:
-    navigate_wait(x=0, y=0, z=2.0, frame_id='aruco_12')
-    print('Point 1 done!')
+    file1 = open('flight-mission.txt', 'r')
+    points = file1.readlines()
 
-    navigate_wait(x=0, y=0, z=2.0, frame_id='aruco_14')
-    print('Point 2 done!')
+    for point in points:
+        parts = point.split(',')
+        if len(parts) != 2:
+            print('You have made a wrong input. I cannot process it.')
+            continue
 
-    navigate_wait(x=0, y=0, z=2.0, frame_id='aruco_20')
-    print('Point 3 done!')
+        marker = int(parts[0])
+        z = float(parts[1])
 
-    navigate_wait(x=0, y=0, z=2.0, frame_id='aruco_29')
-    print('Point 4 done!')
-
-    navigate_wait(x=0, y=0, z=2.0, frame_id='aruco_27')
-    print('Point 5 done!')
+        frameid = 'aruco_{}'.format(marker)
+        navigate_wait(z=z, frame_id=frameid)
+        telem = get_telemetry()
+        print('Marker {} reached! Current height is {}'.format(marker, telem.y))
 
 except:
     print('Something went wrong. Please, try again...')
