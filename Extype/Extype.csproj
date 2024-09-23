@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <PackageVersion>1.2.0.0</PackageVersion>
+        <Title>Extype</Title>
+        <Authors>Alex Valchuk</Authors>
+        <Description>The library that extends types.</Description>
+        <Copyright>Copyright © 2024 AEROLOGOS.</Copyright>
+        <RepositoryUrl>https://github.com/aerologos/Extype.git</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <PackageTags>type extensions</PackageTags>
+        <PackageReleaseNotes>Make the source code public.</PackageReleaseNotes>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <AssemblyVersion>1.2.0.0</AssemblyVersion>
+        <FileVersion>1.2.0.0</FileVersion>
+        <RootNamespace>Extype</RootNamespace>
+    </PropertyGroup>
+
+</Project>
