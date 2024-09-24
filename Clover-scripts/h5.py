@@ -16,6 +16,8 @@ navigate = rospy.ServiceProxy('navigate', srv.Navigate)
 land = rospy.ServiceProxy('land', Trigger)
 set_effect = rospy.ServiceProxy('led/set_effect', SetLEDEffect)
 
+send_command = rospy.ServiceProxy('mavros/cmd/command', CommandLong)
+
 def calibrate_gyro():
     rospy.loginfo('Calibrate gyro')
     if not send_command(command=mavutil.mavlink.MAV_CMD_PREFLIGHT_CALIBRATION, param1=1).success:
