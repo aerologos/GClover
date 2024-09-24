@@ -16,6 +16,22 @@ navigate = rospy.ServiceProxy('navigate', srv.Navigate)
 land = rospy.ServiceProxy('land', Trigger)
 set_effect = rospy.ServiceProxy('led/set_effect', SetLEDEffect)
 
+def calibrate_gyro():
+    rospy.loginfo('Calibrate gyro')
+    if not send_command(command=mavutil.mavlink.MAV_CMD_PREFLIGHT_CALIBRATION, param1=1).success:
+        return False
+
+    calibrating = False
+    while not rospy.is_shutdown():
+        state = rospy.wait_for_message('mavros/state', State)
+        if state.system_status == mavutil.mavlink.MAV_STATE_CALIBRATING or state.system_status == mavutil.mavlink.MAV_STATE_UNINIT:
+            calibrating = True
+        elif calibrating and state.system_status == mavutil.mavlink.MAV_STATE_STANDBY:
+            rospy.loginfo('Calibrating finished')
+            return True
+
+calibrate_gyro()
+
 telem = get_telemetry()
 print('Battery: {}'.format(telem.voltage))
 print('Connected: {}'.format(telem.connected))
@@ -48,9 +64,10 @@ try:
         z = float(parts[1])
 
         frameid = 'aruco_{}'.format(marker)
-        navigate_wait(z=z, frame_id=frameid)
+        navigate_wait(z=z, yaw=math.pi/2, frame_id=frameid)
         telem = get_telemetry()
         print('Marker {} reached! Current height is {}'.format(marker, telem.y))
+        rospy.sleep(3)
 
 except:
     print('Something went wrong. Please, try again...')
