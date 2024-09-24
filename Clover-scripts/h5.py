@@ -5,6 +5,10 @@ import rospy
 from std_srvs.srv import Trigger
 from sensor_msgs.msg import Range
 
+from pymavlink import mavutil
+from mavros_msgs.srv import CommandLong
+from mavros_msgs.msg import State
+
 from clover import srv
 from clover import long_callback
 from clover.srv import SetLEDEffect
