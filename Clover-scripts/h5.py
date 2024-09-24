@@ -10,7 +10,6 @@ from clover import long_callback
 from clover.srv import SetLEDEffect
 
 rospy.init_node('flight')
-bridge = CvBridge()
 
 get_telemetry = rospy.ServiceProxy('get_telemetry', srv.GetTelemetry)
 navigate = rospy.ServiceProxy('navigate', srv.Navigate)
