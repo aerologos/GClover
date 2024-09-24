@@ -6,6 +6,7 @@ using LiveChartsCore.SkiaSharpView.Avalonia;
 using IndoorMap.Services.Abstract;
 using IndoorMap.Views;
 using IndoorMap.Models;
+using DomainModel;
 using NLog;
 using Prism.Commands;
 using Prism.Dialogs;
@@ -72,12 +73,13 @@ namespace IndoorMap.ViewModels
         private ArucoMarkerLine[] GetArucoMarkerSet(int from, int to)
         {
             var arucoSet = new List<ArucoMarkerLine>();
+            var z = 2;
 
             for (int i = from + 2; i <= to; i += 3)
             {
-                var marker1 = new ArucoMarker(i - 2);
-                var marker2 = new ArucoMarker(i - 1);
-                var marker3 = new ArucoMarker(i);
+                var marker1 = new ArucoMarker(i - 2, z, Guid.NewGuid().ToString());
+                var marker2 = new ArucoMarker(i - 1, z, Guid.NewGuid().ToString());
+                var marker3 = new ArucoMarker(i, z, Guid.NewGuid().ToString());
 
                 var line = new ArucoMarkerLine(marker1, marker2, marker3);
                 arucoSet.Add(line);
@@ -86,22 +88,21 @@ namespace IndoorMap.ViewModels
             return arucoSet.ToArray();
         }
         
-        private const double _defaultZ = 2;
         public void AddPoint(object commandParam)
         {
-            var arucoNumber = (int)commandParam;
-            _notificationService.NotifyAboutSuccess("Точка {" + arucoNumber + "} добавлена");
-            AddPointToFile(arucoNumber);
+            var arucoMarker = (ArucoMarker)commandParam;
+            _notificationService.NotifyAboutSuccess("Точка {" + arucoMarker.Number + "} добавлена");
+            AddPointToFile(arucoMarker);
         }
 
-        private void AddPointToFile(int arucoNumber)
+        private void AddPointToFile(ArucoMarker arucoMarker)
         {
             var fileStream = new FileStream(_config.FlightMissionFile, FileMode.Append, FileAccess.Write);
             var steamWriter = new StreamWriter(fileStream, System.Text.Encoding.ASCII);
 
             try
             {
-                var coords = $"{arucoNumber},{_defaultZ}";
+                var coords = $"{arucoMarker.Number},{arucoMarker.Z}";
                 steamWriter.WriteLine(coords);
             }
             catch (Exception ex)

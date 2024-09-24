@@ -1,3 +1,5 @@
+using DomainModel;
+
 namespace IndoorMap.Models;
 
 public class ArucoMarkerLine

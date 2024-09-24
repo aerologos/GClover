@@ -1,0 +1,25 @@
+<UserControl x:Class="ElevationMap.Views.ElevationMapView"
+             xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:prism="http://prismlibrary.com/"
+             xmlns:lvc="using:LiveChartsCore.SkiaSharpView.Avalonia"
+             xmlns:avalonia="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             mc:Ignorable="d">
+
+<StackPanel Orientation="Vertical">
+    <lvc:CartesianChart x:Name="ElevationMap"
+                        Foreground="Lavender"
+                        DataContext="{Binding Elevation}"
+                        Series="{Binding Series}"
+                        Title="{Binding Title}"
+                        XAxes="{Binding XAxes}"
+                        YAxes="{Binding YAxes}"
+                        Opacity="0.9"
+                        Height="200">
+    </lvc:CartesianChart>
+</StackPanel>
+
+</UserControl>

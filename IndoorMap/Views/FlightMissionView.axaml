@@ -22,9 +22,9 @@
             <ItemsRepeater.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                        <Button Content="{Binding Aruco1.Number}" Foreground="Lavender" Margin="10 0 0 0" Command="{Binding $parent[views:FlightMissionView].((viewModels:FlightMissionViewModel)DataContext).AddPointCommand}" CommandParameter="{Binding Aruco1.Number}"/>
-                        <Button Content="{Binding Aruco2.Number}" Foreground="Lavender" Margin="10 0 0 0" Command="{Binding $parent[views:FlightMissionView].((viewModels:FlightMissionViewModel)DataContext).AddPointCommand}" CommandParameter="{Binding Aruco2.Number}"/>
-                        <Button Content="{Binding Aruco3.Number}" Foreground="Lavender" Margin="10 0 0 0" Command="{Binding $parent[views:FlightMissionView].((viewModels:FlightMissionViewModel)DataContext).AddPointCommand}" CommandParameter="{Binding Aruco3.Number}"/>
+                        <Button Content="{Binding Aruco1.Number}" Foreground="Lavender" Margin="10 0 0 0" Command="{Binding $parent[views:FlightMissionView].((viewModels:FlightMissionViewModel)DataContext).AddPointCommand}" CommandParameter="{Binding Aruco1}"/>
+                        <Button Content="{Binding Aruco2.Number}" Foreground="Lavender" Margin="10 0 0 0" Command="{Binding $parent[views:FlightMissionView].((viewModels:FlightMissionViewModel)DataContext).AddPointCommand}" CommandParameter="{Binding Aruco2}"/>
+                        <Button Content="{Binding Aruco3.Number}" Foreground="Lavender" Margin="10 0 0 0" Command="{Binding $parent[views:FlightMissionView].((viewModels:FlightMissionViewModel)DataContext).AddPointCommand}" CommandParameter="{Binding Aruco3}"/>
                     </StackPanel>
                 </DataTemplate>
             </ItemsRepeater.ItemTemplate>
@@ -38,9 +38,9 @@
             <ItemsRepeater.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                        <Button Content="{Binding Aruco1.Number}" Foreground="Lavender" Margin="10 0 0 0" Command="{Binding $parent[views:FlightMissionView].((viewModels:FlightMissionViewModel)DataContext).AddPointCommand}" CommandParameter="{Binding Aruco1.Number}"/>
-                        <Button Content="{Binding Aruco2.Number}" Foreground="Lavender" Margin="10 0 0 0" Command="{Binding $parent[views:FlightMissionView].((viewModels:FlightMissionViewModel)DataContext).AddPointCommand}" CommandParameter="{Binding Aruco2.Number}"/>
-                        <Button Content="{Binding Aruco3.Number}" Foreground="Lavender" Margin="10 0 0 0" Command="{Binding $parent[views:FlightMissionView].((viewModels:FlightMissionViewModel)DataContext).AddPointCommand}" CommandParameter="{Binding Aruco3.Number}"/>
+                        <Button Content="{Binding Aruco1.Number}" Foreground="Lavender" Margin="10 0 0 0" Command="{Binding $parent[views:FlightMissionView].((viewModels:FlightMissionViewModel)DataContext).AddPointCommand}" CommandParameter="{Binding Aruco1}"/>
+                        <Button Content="{Binding Aruco2.Number}" Foreground="Lavender" Margin="10 0 0 0" Command="{Binding $parent[views:FlightMissionView].((viewModels:FlightMissionViewModel)DataContext).AddPointCommand}" CommandParameter="{Binding Aruco2}"/>
+                        <Button Content="{Binding Aruco3.Number}" Foreground="Lavender" Margin="10 0 0 0" Command="{Binding $parent[views:FlightMissionView].((viewModels:FlightMissionViewModel)DataContext).AddPointCommand}" CommandParameter="{Binding Aruco3}"/>
                     </StackPanel>
                 </DataTemplate>
             </ItemsRepeater.ItemTemplate>
@@ -49,14 +49,14 @@
         <ItemsRepeater ItemsSource="{Binding ArucoMarkersSet3}" Margin="20 5">
             <ItemsRepeater.Layout>
                 <StackLayout Spacing="5"
-                            Orientation="Vertical" />
+                             Orientation="Vertical" />
             </ItemsRepeater.Layout>
             <ItemsRepeater.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                        <Button Content="{Binding Aruco1.Number}" Foreground="Lavender" Margin="10 0 0 0" Command="{Binding $parent[views:FlightMissionView].((viewModels:FlightMissionViewModel)DataContext).AddPointCommand}" CommandParameter="{Binding Aruco1.Number}"/>
-                        <Button Content="{Binding Aruco2.Number}" Foreground="Lavender" Margin="10 0 0 0" Command="{Binding $parent[views:FlightMissionView].((viewModels:FlightMissionViewModel)DataContext).AddPointCommand}" CommandParameter="{Binding Aruco2.Number}"/>
-                        <Button Content="{Binding Aruco3.Number}" Foreground="Lavender" Margin="10 0 0 0" Command="{Binding $parent[views:FlightMissionView].((viewModels:FlightMissionViewModel)DataContext).AddPointCommand}" CommandParameter="{Binding Aruco3.Number}"/>
+                        <Button Content="{Binding Aruco1.Number}" Foreground="Lavender" Margin="10 0 0 0" Command="{Binding $parent[views:FlightMissionView].((viewModels:FlightMissionViewModel)DataContext).AddPointCommand}" CommandParameter="{Binding Aruco1}"/>
+                        <Button Content="{Binding Aruco2.Number}" Foreground="Lavender" Margin="10 0 0 0" Command="{Binding $parent[views:FlightMissionView].((viewModels:FlightMissionViewModel)DataContext).AddPointCommand}" CommandParameter="{Binding Aruco2}"/>
+                        <Button Content="{Binding Aruco3.Number}" Foreground="Lavender" Margin="10 0 0 0" Command="{Binding $parent[views:FlightMissionView].((viewModels:FlightMissionViewModel)DataContext).AddPointCommand}" CommandParameter="{Binding Aruco3}"/>
                     </StackPanel>
                 </DataTemplate>
             </ItemsRepeater.ItemTemplate>

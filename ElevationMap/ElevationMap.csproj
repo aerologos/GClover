@@ -52,6 +52,7 @@
   <ItemGroup>
     <ProjectReference Include="..\DomainModel\DomainModel.csproj" />
     <ProjectReference Include="..\Extype\Extype.csproj" />
+    <ProjectReference Include="..\Parallops\Parallops.csproj" />
   </ItemGroup>
   <ItemGroup>
     <AvaloniaResource Include="Themes\Button.xaml" />
