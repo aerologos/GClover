@@ -1,9 +1,9 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UI", "UI\UI.csproj", "{B0FD2A0B-40F5-4E0B-ADDD-3EB3FE15EDC5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IndoorMap", "IndoorMap\IndoorMap.csproj", "{B0FD2A0B-40F5-4E0B-ADDD-3EB3FE15EDC5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Extype", "Extype\Extype.csproj", "{384133CC-77AA-41EE-B17F-F7D97E2BD3E0}"
 EndProject
