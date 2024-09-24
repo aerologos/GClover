@@ -25,4 +25,6 @@ public class Config : IConfig
     }
 
     public string FlightMissionFile { get; set; }
+
+    public string DroneScriptFile { get; set; }
 }

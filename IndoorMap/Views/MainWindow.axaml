@@ -13,7 +13,7 @@
         mc:Ignorable="d"
         Title="{Binding AppName}"
         Width="640"
-        Height="600"
+        Height="660"
         Background="#3b3b3b">
     
     <ContentControl prism:RegionManager.RegionName="{x:Static const:PrismRegions.FlightMissionViewContentRegion}"/>

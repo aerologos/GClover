@@ -10,6 +10,7 @@ using NLog;
 using Prism.Commands;
 using Prism.Dialogs;
 using System.IO;
+using System.Diagnostics;
 
 namespace IndoorMap.ViewModels
 {
@@ -38,6 +39,11 @@ namespace IndoorMap.ViewModels
         public DelegateCommand<object> RemovePointCommand { get; }
         
         /// <summary>
+        /// Gets the command to start the flight mission.
+        /// </summary>
+        public DelegateCommand StartMissionCommand { get; }
+        
+        /// <summary>
         /// Gets the command to clear the flight mission.
         /// </summary>
         public DelegateCommand ClearMissionCommand { get; }
@@ -53,6 +59,7 @@ namespace IndoorMap.ViewModels
 
             AddPointCommand = new DelegateCommand<object>(AddPoint);
             RemovePointCommand = new DelegateCommand<object>(RemovePoint);
+            StartMissionCommand = new DelegateCommand(StartMission);
             ClearMissionCommand = new DelegateCommand(ClearMission);
 
             ArucoMarkersSet1 = GetArucoMarkerSet(0, 29);
@@ -111,6 +118,29 @@ namespace IndoorMap.ViewModels
 
         private void RemovePoint(object commandParam)
         {
+        }
+
+        private void StartMission()
+        {
+            _notificationService.NotifyAboutSuccess("Полетное задание запущено");
+            run_cmd("python3", _config.DroneScriptFile);
+        }
+
+        private void run_cmd(string processName, string args)
+        {
+            ProcessStartInfo start = new ProcessStartInfo();
+            start.FileName = processName;
+            start.Arguments = string.Format("{0}", args);
+            start.UseShellExecute = false;
+            start.RedirectStandardOutput = true;
+            using(Process process = Process.Start(start))
+            {
+                using(StreamReader reader = process.StandardOutput)
+                {
+                    string result = reader.ReadToEnd();
+                    Console.Write(result);
+                }
+            }
         }
 
         private void ClearMission()

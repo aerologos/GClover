@@ -64,6 +64,7 @@
     </StackPanel>
 
     <Button Content="Очистить полетное задание" Margin="10 10" Command="{Binding ClearMissionCommand}" Theme="{StaticResource MaterialOutlineButton}"/>
+    <Button Content="Запустить полетное задание" Margin="10 10" Command="{Binding StartMissionCommand}" Theme="{StaticResource MaterialOutlineButton}"/>
 </StackPanel>
 
 </UserControl>

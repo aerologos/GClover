@@ -1,3 +1,4 @@
 {
-    "FlightMissionFile": "/home/alex-valchuk/Projects/flight-mission.txt"
+    "FlightMissionFile": "/home/alex-valchuk/Projects/Glover/Clover-scripts/flight-mission.txt",
+    "DroneScriptFile": "/home/alex-valchuk/Projects/Glover/Clover-scripts/h5.py"
 }
