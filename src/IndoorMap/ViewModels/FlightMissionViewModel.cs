@@ -125,7 +125,7 @@ namespace IndoorMap.ViewModels
                 {
                     case ButtonResult.OK:
                         var arucoMarker = r.Parameters[nameof(ArucoMarker)] as ArucoMarker;
-                        _notificationService.NotifyAboutSuccess("Точка {" + arucoMarker.Number + "} добавлена");
+                        _notificationService.NotifyAboutSuccess("Точка " + arucoMarker.Number + " добавлена");
                         AddPointToFile(arucoMarker);
                         break;
                 }
