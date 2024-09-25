@@ -50,6 +50,9 @@ namespace IndoorMap
             containerRegistry.RegisterSingleton<INotificationService, ToastNotificationService>();
             containerRegistry.RegisterSingleton<IFileService, FileService>();
             
+            // dialogs
+            containerRegistry.RegisterDialog<PointDialogView, PointDialogViewModel>();
+            
             // though it might be dangerous, I need to dynamically replace data link dependencies
             containerRegistry.RegisterSingleton<IContainerRegistry>(() => containerRegistry);
         }

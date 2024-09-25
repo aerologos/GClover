@@ -143,7 +143,7 @@ namespace ElevationMap.Models
         {
             var routePoints = _markers.ToArray();
             
-            if (routePoints.Length < 2) 
+            if (routePoints.Length < 1) 
             {
                 Series = new ISeries[] {};
                 return;
@@ -193,7 +193,7 @@ namespace ElevationMap.Models
                 currentDistance += 3;
                 flyingDistances.Add(currentDistance);
                 
-                flyingElevations.Add(homePointAltitude + marker.Z);
+                flyingElevations.Add(homePointAltitude + marker.Altitude);
             }
 
             var elevations = new List<Elevation>();
@@ -202,8 +202,8 @@ namespace ElevationMap.Models
                 elevations.Add(new Elevation(flyingDistances[i], flyingElevations[i]));
             }
             
-            currentDistance += 3;
-            elevations.Add(new Elevation(currentDistance, 0));
+            //currentDistance += 3;
+            //elevations.Add(new Elevation(currentDistance, 0));
 
             return elevations.ToArray();
         }

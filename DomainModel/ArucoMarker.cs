@@ -1,8 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
 namespace DomainModel;
 
 public class ArucoMarker
@@ -10,13 +5,13 @@ public class ArucoMarker
     public ArucoMarker(int number, float z, string id)
     {
         Number = number;
-        Z = z;
+        Altitude = z;
         Id = id;
     }
     
     public int Number{ get; }
     
-    public float Z { get; }
+    public float Altitude { get; set; }
 
     public string Id { get; }
 }

@@ -90,9 +90,36 @@ namespace IndoorMap.ViewModels
         
         public void AddPoint(object commandParam)
         {
-            var arucoMarker = (ArucoMarker)commandParam;
-            _notificationService.NotifyAboutSuccess("Точка {" + arucoMarker.Number + "} добавлена");
-            AddPointToFile(arucoMarker);
+            try
+            {
+                var arucoMarker = (ArucoMarker)commandParam;
+                var dialogParameters = new DialogParameters
+                {
+                    { nameof(ArucoMarker), arucoMarker } 
+                };
+
+                _dialogService.ShowDialog(nameof(PointDialogView), dialogParameters, HandleDialogResult());        
+            }
+            catch (Exception ex)
+            {
+                _notificationService.NotifyAboutErrorAsync("Что-то пошло не так. Проверьте логи.");
+                _logger.Error(ex);
+            }
+        }
+
+        private Action<IDialogResult> HandleDialogResult()
+        {
+            return r =>
+            {
+                switch (r.Result)
+                {
+                    case ButtonResult.OK:
+                        var arucoMarker = r.Parameters[nameof(ArucoMarker)] as ArucoMarker;
+                        _notificationService.NotifyAboutSuccess("Точка {" + arucoMarker.Number + "} добавлена");
+                        AddPointToFile(arucoMarker);
+                        break;
+                }
+            };
         }
 
         private void AddPointToFile(ArucoMarker arucoMarker)
@@ -102,7 +129,7 @@ namespace IndoorMap.ViewModels
 
             try
             {
-                var coords = $"{arucoMarker.Number},{arucoMarker.Z}";
+                var coords = $"{arucoMarker.Number},{arucoMarker.Altitude}";
                 steamWriter.WriteLine(coords);
             }
             catch (Exception ex)
