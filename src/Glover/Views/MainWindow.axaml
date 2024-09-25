@@ -1,0 +1,52 @@
+﻿<Window x:Class="Glover.Views.MainWindow"
+        xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:prism="http://prismlibrary.com/"
+        xmlns:view="using:Glover.Views"
+        xmlns:const="using:Glover.Const"
+        xmlns:avalonia="using:Material.Icons.Avalonia"
+        xmlns:controls="clr-namespace:Material.Styles.Controls;assembly=Material.Styles"
+        xmlns:vm="using:Glover.ViewModels"
+        x:DataType="vm:MainWindowViewModel"
+        mc:Ignorable="d"
+        Title="{Binding AppName}"
+        Background="#3b3b3b">
+    <StackPanel Orientation="Horizontal">
+        <Button Background="Transparent"
+                VerticalAlignment="Top"
+                Foreground="#303030"
+                Margin="8"
+                Width="56"
+                Height="56"
+                Command="{Binding AddModuleCommand}"
+                Content="{avalonia:MaterialIconExt Kind=PlusBox, Size=56}"
+                ToolTip.Tip="Добавить модуль"/>
+
+        <StackPanel Orientation="Vertical"
+                    Margin="20 0 0 0"
+                    Width="800"
+                    Height="600">
+            <StackPanel Orientation="Horizontal">
+                <Border Width="400" Height="40" BorderThickness="1">
+                    <ContentControl prism:RegionManager.RegionName="{x:Static const:PrismRegions.TopLeft}"/>
+                </Border>
+
+                <Border Width="400" Height="40">
+                    <ContentControl prism:RegionManager.RegionName="{x:Static const:PrismRegions.TopRight}"/>
+                </Border>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <Border Width="400" Height="40">
+                    <ContentControl prism:RegionManager.RegionName="{x:Static const:PrismRegions.BottomLeft}"/>
+                </Border>
+
+                <Border Width="400" Height="40">
+                    <ContentControl prism:RegionManager.RegionName="{x:Static const:PrismRegions.BottomRight}"/>
+                </Border>
+            </StackPanel>
+        </StackPanel>
+    </StackPanel>
+</Window>

@@ -1,0 +1,42 @@
+<UserControl x:Class="Glover.Views.ModuleDialogView"
+             xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:prism="http://prismlibrary.com/"
+             xmlns:lvc="using:LiveChartsCore.SkiaSharpView.Avalonia"
+             xmlns:avalonia="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+             xmlns:p1="clr-namespace:Material.Styles.Assists;assembly=Material.Styles"
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             mc:Ignorable="d"
+             Width="300"
+             Height="200">
+
+    <StackPanel Orientation="Vertical">
+        <ComboBox Margin="8 12 8 0"
+                  Classes="outline"
+                  p1:ComboBoxAssist.Label="Модуль"
+                  ItemsSource="{Binding Modules}"
+                  SelectedValue="{Binding SelectedModule}"/>
+            
+        <ComboBox Margin="8 12 8 0"
+                  Classes="outline"
+                  p1:ComboBoxAssist.Label="Расположение"
+                  ItemsSource="{Binding Regions}"
+                  SelectedValue="{Binding SelectedRegion}"/>
+            
+        <StackPanel Orientation="Horizontal"
+                    Margin="5 12">
+            <Button Command="{Binding SaveCommand}"
+                    Theme="{StaticResource MaterialOutlineButton}"
+                    Content="Сохранить"
+                    Margin="5 0"/>
+            
+            <Button Command="{Binding CancelCommand}"
+                    Theme="{StaticResource MaterialOutlineButton}"
+                    Content="Отменить"
+                    Margin="5 0"/>
+        </StackPanel>
+    </StackPanel>
+
+</UserControl>
