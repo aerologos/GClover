@@ -27,4 +27,14 @@ public class Config : IConfig
     public string FlightMissionFile { get; set; }
 
     public string DroneScriptFile { get; set; }
+    
+    public string DroneAddress { get; set; }
+
+    public int DronePort { get; set; }
+    
+    public string DroneUsername { get; set; }
+
+    public string DronePassword { get; set; }
+
+    public string DroneFileStorage { get; set; }
 }

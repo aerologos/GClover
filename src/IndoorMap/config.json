@@ -1,4 +1,10 @@
 {
     "FlightMissionFile": "/home/alex-valchuk/Projects/Glover/src/Clover-scripts/flight-mission.txt",
-    "DroneScriptFile": "/home/alex-valchuk/Projects/Glover/src/Clover-scripts/h5.py"
+    "DroneScriptFile": "/home/alex-valchuk/Projects/Glover/src/Clover-scripts/h5.py",
+    
+    "DroneAddress": "192.168.11.1",
+    "DronePort": 22,
+    "DroneUsername": "pi",
+    "DronePassword": "raspberry",
+    "DroneFileStorage": "/home/pi/catkin_ws/src/clover/clover/examples/"
 }

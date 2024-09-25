@@ -36,6 +36,8 @@ def calibrate_gyro():
             rospy.loginfo('Calibrating finished')
             return True
 
+set_effect(r=255)
+
 calibrate_gyro()
 
 telem = get_telemetry()
@@ -50,7 +52,6 @@ def navigate_wait(x=0, y=0, z=0, yaw=float('nan'), speed=0.5, frame_id='', auto_
         if math.sqrt(telem.x ** 2 + telem.y ** 2 + telem.z ** 2) < tolerance:
             break
         rospy.sleep(0.2)
-
 
 print('Take off and hover 1 m above the ground')
 navigate_wait(x=0, y=0, z=1, frame_id='body', auto_arm=True)

@@ -12,6 +12,9 @@ using Prism.Commands;
 using Prism.Dialogs;
 using System.IO;
 using System.Diagnostics;
+using Renci.SshNet;
+using System.Text.RegularExpressions;
+
 
 namespace IndoorMap.ViewModels
 {
@@ -40,14 +43,19 @@ namespace IndoorMap.ViewModels
         public DelegateCommand<object> RemovePointCommand { get; }
         
         /// <summary>
-        /// Gets the command to start the flight mission.
-        /// </summary>
-        public DelegateCommand StartMissionCommand { get; }
-        
-        /// <summary>
         /// Gets the command to clear the flight mission.
         /// </summary>
         public DelegateCommand ClearMissionCommand { get; }
+        
+        /// <summary>
+        /// Gets the command to save the flight mission on the quad.
+        /// </summary>
+        public DelegateCommand SaveMissionCommand { get; }
+        
+        /// <summary>
+        /// Gets the command to start the flight mission.
+        /// </summary>
+        public DelegateCommand StartMissionCommand { get; }
 
         public FlightMissionViewModel(
             INotificationService notificationService,
@@ -60,8 +68,10 @@ namespace IndoorMap.ViewModels
 
             AddPointCommand = new DelegateCommand<object>(AddPoint);
             RemovePointCommand = new DelegateCommand<object>(RemovePoint);
-            StartMissionCommand = new DelegateCommand(StartMission);
+
             ClearMissionCommand = new DelegateCommand(ClearMission);
+            SaveMissionCommand = new DelegateCommand(SaveMission);
+            StartMissionCommand = new DelegateCommand(StartMission);
 
             ArucoMarkersSet1 = GetArucoMarkerSet(0, 29);
             ArucoMarkersSet2 = GetArucoMarkerSet(30, 59);
@@ -148,29 +158,6 @@ namespace IndoorMap.ViewModels
         {
         }
 
-        private void StartMission()
-        {
-            _notificationService.NotifyAboutSuccess("Полетное задание запущено");
-            run_cmd("python3", _config.DroneScriptFile);
-        }
-
-        private void run_cmd(string processName, string args)
-        {
-            ProcessStartInfo start = new ProcessStartInfo();
-            start.FileName = processName;
-            start.Arguments = string.Format("{0}", args);
-            start.UseShellExecute = false;
-            start.RedirectStandardOutput = true;
-            using(Process process = Process.Start(start))
-            {
-                using(StreamReader reader = process.StandardOutput)
-                {
-                    string result = reader.ReadToEnd();
-                    Console.Write(result);
-                }
-            }
-        }
-
         private void ClearMission()
         {
             ClearMissionFile();
@@ -198,6 +185,102 @@ namespace IndoorMap.ViewModels
             {
                 File.Create(_config.FlightMissionFile);
             }
+        }
+
+        private void SaveMission()
+        {
+            if (!File.Exists(_config.FlightMissionFile))
+            {
+                _notificationService.NotifyAboutFailure($"Отсутствует файл полетного задания {_config.FlightMissionFile}");
+                return;
+            }
+
+            if (!File.Exists(_config.DroneScriptFile))
+            {
+                _notificationService.NotifyAboutFailure($"Отсутствует файл полетной программы {_config.DroneScriptFile}");
+                return;
+            }
+
+            var client = GetSftpClient();
+
+            try
+            {
+                client.Connect();
+
+                UploadFileBySftp(client, _config.DroneScriptFile, _config.DroneFileStorage);
+                UploadFileBySftp(client, _config.FlightMissionFile, _config.DroneFileStorage);
+
+                _notificationService.NotifyAboutSuccess("Полетное задание сохранено на дрон");
+            }
+            catch (Exception ex)
+            {
+                _notificationService.NotifyAboutFailure("Ошибка сохранения файла. Проверьте подключение и логи.");
+                _logger.Error(ex, ex.Message);
+            }
+            finally
+            {
+                client.Disconnect();
+            }
+        }
+
+        private SftpClient GetSftpClient()
+        {
+            return new SftpClient(
+                _config.DroneAddress,
+                _config.DronePort,
+                _config.DroneUsername,
+                _config.DronePassword);
+        }
+
+        private void UploadFileBySftp(SftpClient client, string localFilePath, string remoteDirectory)
+        {
+            var fileName = Path.GetFileName(localFilePath);
+            var remotePath = $"{remoteDirectory}{fileName}";
+
+            using (var fileStream = new FileStream(localFilePath, FileMode.Open))
+            {
+                client.UploadFile(fileStream, remotePath);
+            }
+        }
+
+        private void StartMission()
+        {
+            var client = GetSshClient();
+
+            try
+            {
+                client.Connect();
+
+                var scriptFile = Path.GetFileName(_config.DroneScriptFile);
+                var remotePath = $"{_config.DroneFileStorage}{scriptFile}";
+
+                using ShellStream shellStream = client.CreateShellStream("ShellName", 80, 24, 800, 600, 1024);
+
+                string prompt = shellStream.Expect(new Regex(@"[$>]"));
+
+                shellStream.WriteLine($"/usr/bin/python3 {remotePath}");
+                //shellStream.WriteLine($"python3 {remotePath}");
+    
+                _notificationService.NotifyAboutSuccess("Полетное задание выполняется");
+            }
+            catch (Exception ex)
+            {
+                _notificationService.NotifyAboutFailure("Ошибка сохранения файла. Проверьте подключение и логи.");
+                _logger.Error(ex, ex.Message);
+            }
+            finally
+            {
+                client.Disconnect();
+            }
+        }
+
+        private SshClient GetSshClient()
+        {
+            return new SshClient(
+                _config.DroneAddress,
+                _config.DronePort,
+                _config.DroneUsername,
+                _config.DronePassword);
         }
     }
 }

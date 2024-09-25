@@ -63,8 +63,9 @@
         </ItemsRepeater>
     </StackPanel>
 
-    <Button Content="Очистить полетное задание" Margin="10 10" Command="{Binding ClearMissionCommand}" Theme="{StaticResource MaterialOutlineButton}"/>
-    <Button Content="Запустить полетное задание" Margin="10 10" Command="{Binding StartMissionCommand}" Theme="{StaticResource MaterialOutlineButton}"/>
+    <Button Content="Очистить" Margin="10 10" Command="{Binding ClearMissionCommand}" Theme="{StaticResource MaterialOutlineButton}"/>
+    <Button Content="Сохранить на коптер" Margin="10 10" Command="{Binding SaveMissionCommand}" Theme="{StaticResource MaterialOutlineButton}"/>
+    <Button Content="Выполнить" Margin="10 10" Command="{Binding StartMissionCommand}" Theme="{StaticResource MaterialOutlineButton}"/>
 </StackPanel>
 
 </UserControl>
