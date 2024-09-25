@@ -72,7 +72,7 @@ try:
         frameid = 'aruco_{}'.format(marker)
         navigate_wait(z=z, yaw=math.pi/2, frame_id=frameid)
         telem = get_telemetry()
-        print('Marker {} reached! Current height is {}'.format(marker, telem.y))
+        print('Marker {} reached! Current height is {}'.format(marker, telem.z))
         rospy.sleep(3)
 
 except:
