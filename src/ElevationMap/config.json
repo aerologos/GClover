@@ -1,0 +1,5 @@
+{
+    "FlightMissionFile": "/home/alex-valchuk/Projects/Glover/src/Clover-scripts/flight-mission.txt",
+    "DroneScriptFile": "/home/alex-valchuk/Projects/Glover/src/Clover-scripts/h5.py",
+    "MonitorDowntimeInMs": 1000
+}

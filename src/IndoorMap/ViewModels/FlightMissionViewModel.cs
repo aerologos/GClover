@@ -95,7 +95,7 @@ namespace IndoorMap.ViewModels
                 var arucoMarker = (ArucoMarker)commandParam;
                 var dialogParameters = new DialogParameters
                 {
-                    { nameof(ArucoMarker), arucoMarker } 
+                    { nameof(ArucoMarker), arucoMarker }
                 };
 
                 _dialogService.ShowDialog(nameof(PointDialogView), dialogParameters, HandleDialogResult());        
