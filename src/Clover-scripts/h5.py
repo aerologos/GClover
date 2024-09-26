@@ -55,7 +55,7 @@ def navigate_wait(x=0, y=0, z=0, yaw=float('nan'), speed=0.5, frame_id='', auto_
             break
         rospy.sleep(0.2)
 
-flight_mission_file = '{0}/flight-mission.txt'.format(Path.cwd())
+flight_mission_file = '{0}/flight-mission.txt'.format(Path(__file__).parent.resolve())
 print(flight_mission_file)
 
 file1 = open(flight_mission_file, 'r')

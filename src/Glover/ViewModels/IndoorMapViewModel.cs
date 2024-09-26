@@ -267,7 +267,7 @@ namespace Glover.ViewModels
         private SshClient _droneClient;
         private ShellStream _droneShell;
         private CancellationTokenSource _startMissionCancellation = new CancellationTokenSource();
-        private async void StartMission()
+        private void StartMission()
         {
             _droneClient = GetSshClient();
 
