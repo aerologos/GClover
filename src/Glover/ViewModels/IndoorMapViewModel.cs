@@ -264,50 +264,35 @@ namespace Glover.ViewModels
             }
         }
 
+        private SshClient _droneClient;
+        private ShellStream _droneShell;
         private CancellationTokenSource _startMissionCancellation = new CancellationTokenSource();
-        private void StartMission()
+        private async void StartMission()
         {
-            var droneClient = GetSshClient();
+            _droneClient = GetSshClient();
 
             try
             {
                 var startMissionToken = _startMissionCancellation.Token;
-                droneClient.Connect();
+                _droneClient.Connect();
 
                 var scriptFile = Path.GetFileName(_config.DroneScriptFile);
                 var remotePath = $"{_config.DroneFileStorage}{scriptFile}";
 
-                var droneShell = droneClient.CreateShellStream("ShellName", 80, 24, 800, 600, 20240);
+                _droneShell = _droneClient.CreateShellStream("ShellName", 80, 24, 800, 600, 20240);
 
-                string prompt = droneShell.Expect(new Regex(@"[$>]"));
+                string prompt = _droneShell.Expect(new Regex(@"[$>]"));
 
-                droneShell.WriteLine($"/usr/bin/python3 {remotePath}");
+                _droneShell.WriteLine($"/usr/bin/python3 {remotePath}");
     
-                droneShell.ConfigureAwait(true);
                 _notificationService.NotifyAboutSuccess("Полетное задание выполняется");
-
-                GC.SuppressFinalize(droneClient);
-                GC.SuppressFinalize(droneShell);
-
-                while(!startMissionToken.IsCancellationRequested)
-                {
-                    Thread.Sleep(2000);
-
-                    prompt = droneShell.Expect(new Regex(@"[$>]"));
-                    if (!string.IsNullOrWhiteSpace(prompt))
-                        break;
-                }
-
-                droneShell.Close();
-                droneClient.Disconnect();
-                _notificationService.NotifyAboutSuccess("Полетное задание остановлено");
             }
             catch (Exception ex)
             {
                 _notificationService.NotifyAboutFailure("Ошибка запуска. Проверьте подключение и логи.");
                 _logger.Error(ex, ex.Message);
 
-                droneClient.Disconnect();
+                _droneClient.Disconnect();
             }
         }
 
@@ -324,7 +309,10 @@ namespace Glover.ViewModels
         {
             try
             {
-                _startMissionCancellation.Cancel();
+                _droneShell.Close();
+                _droneClient.Disconnect();
+
+                _notificationService.NotifyAboutSuccess("Полетное задание остановлено");
             }
             catch (Exception ex)
             {
