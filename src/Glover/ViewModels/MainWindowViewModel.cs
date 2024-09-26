@@ -24,6 +24,8 @@ namespace Glover.ViewModels
 
         public DelegateCommand AddModuleCommand { get; }
 
+        public DelegateCommand ClearModulesCommand { get; }
+
         /// <summary>
         /// Instantiates the new <see cref="MainWindowViewModel"/> object.
         /// </summary>
@@ -60,6 +62,7 @@ namespace Glover.ViewModels
             _regionManager.RegisterViewWithRegion<ArtificialHorizonView>(PrismRegions.BottomRight);
 
             AddModuleCommand = new DelegateCommand(AddModule);
+            ClearModulesCommand = new DelegateCommand(ClearModules);
         }
 
         public override void OnContentRendered()
@@ -127,6 +130,21 @@ namespace Glover.ViewModels
                 _config.BottomRight = selectedModule;
             }
             
+            _config.Save();
+        }
+
+        private void ClearModules()
+        {
+            _regionManager.RequestNavigate(PrismRegions.TopLeft, nameof(EmptyView));
+            _regionManager.RequestNavigate(PrismRegions.TopRight, nameof(EmptyView));
+            _regionManager.RequestNavigate(PrismRegions.BottomLeft, nameof(EmptyView));
+            _regionManager.RequestNavigate(PrismRegions.BottomRight, nameof(EmptyView));
+
+            _config.TopLeft = string.Empty;
+            _config.TopRight = string.Empty;
+            _config.BottomLeft = string.Empty;
+            _config.BottomRight = string.Empty;
+
             _config.Save();
         }
     }
