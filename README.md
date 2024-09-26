@@ -99,19 +99,29 @@ _Role 4. Pilot_ — organizing pre-flight preparation, servicing the UAS, perfor
 
 ### Source code
 a. Install git client on your operating system: https://git-scm.com/downloads
+
 b. Copy the path to the Glover repository: https://github.com/aerologos/Glover.git
+
 c. Launch git terminal in any directory convenient for you
+
 d. Run the following command: git clone https://github.com/aerologos/Glover.git
 
 ### Deployment
 a. Download Visual Studio Code: https://code.visualstudio.com/download
+
 b. Install Visual Studio Code on your operating system
+
 c. Launch Visual Studio Code
+
 d. Open the root directory of the Glover project
+
 e. In the vscode menu, click Run -> StartDebuging -> C# -> C#: Glover
+
 f. Wait for the Glover program to start
 
 ### Setup
 a. Click the button with the "+" sign
+
 b. In the window that opens, select the module to display, its location and click "Save"
+
 c. Repeat the same action for all other modules
