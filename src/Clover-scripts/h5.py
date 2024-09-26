@@ -63,7 +63,7 @@ try:
 
     for point in points:
         parts = point.split(',')
-        if len(parts) != 2:
+        if len(parts) < 2:
             print('You have made a wrong input. I cannot process it.')
             continue
 
@@ -76,8 +76,8 @@ try:
         print('Marker {} reached! Current height is {}'.format(marker, telem.z))
         rospy.sleep(3)
 
-except:
-    print('Something went wrong. Please, try again...')
+except Exception as err:
+    print(f"Unexpected {err=}, {type(err)=}")
 
 print('Perform landing')
 land()

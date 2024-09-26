@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using Extype;
@@ -17,6 +17,7 @@ using Renci.SshNet;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
+using DryIoc;
 
 
 namespace Glover.ViewModels
@@ -59,6 +60,11 @@ namespace Glover.ViewModels
         /// Gets the command to start the flight mission.
         /// </summary>
         public DelegateCommand StartMissionCommand { get; }
+        
+        /// <summary>
+        /// Gets the command to stop the flight mission.
+        /// </summary>
+        public DelegateCommand StopMissionCommand { get; }
 
         public IndoorMapViewModel(
             INotificationService notificationService,
@@ -74,7 +80,9 @@ namespace Glover.ViewModels
 
             ClearMissionCommand = new DelegateCommand(ClearMission);
             SaveMissionCommand = new DelegateCommand(SaveMission);
+
             StartMissionCommand = new DelegateCommand(StartMission);
+            StopMissionCommand = new DelegateCommand(StopMission);
 
             ArucoMarkersSet1 = GetArucoMarkerSet(0, 29);
             ArucoMarkersSet2 = GetArucoMarkerSet(30, 59);
@@ -256,35 +264,50 @@ namespace Glover.ViewModels
             }
         }
 
-        private async void StartMission()
+        private CancellationTokenSource _startMissionCancellation = new CancellationTokenSource();
+        private void StartMission()
         {
-            var client = GetSshClient();
+            var droneClient = GetSshClient();
 
             try
             {
-                client.Connect();
+                var startMissionToken = _startMissionCancellation.Token;
+                droneClient.Connect();
 
                 var scriptFile = Path.GetFileName(_config.DroneScriptFile);
                 var remotePath = $"{_config.DroneFileStorage}{scriptFile}";
 
-                using ShellStream shellStream = client.CreateShellStream("ShellName", 80, 24, 800, 600, 1024);
+                var droneShell = droneClient.CreateShellStream("ShellName", 80, 24, 800, 600, 20240);
 
-                string prompt = shellStream.Expect(new Regex(@"[$>]"));
+                string prompt = droneShell.Expect(new Regex(@"[$>]"));
 
-                shellStream.WriteLine($"/usr/bin/python3 {remotePath}");
-
-                await Task.Delay(5000);
+                droneShell.WriteLine($"/usr/bin/python3 {remotePath}");
     
+                droneShell.ConfigureAwait(true);
                 _notificationService.NotifyAboutSuccess("Полетное задание выполняется");
+
+                GC.SuppressFinalize(droneClient);
+                GC.SuppressFinalize(droneShell);
+
+                while(!startMissionToken.IsCancellationRequested)
+                {
+                    Thread.Sleep(2000);
+
+                    prompt = droneShell.Expect(new Regex(@"[$>]"));
+                    if (!string.IsNullOrWhiteSpace(prompt))
+                        break;
+                }
+
+                droneShell.Close();
+                droneClient.Disconnect();
+                _notificationService.NotifyAboutSuccess("Полетное задание остановлено");
             }
             catch (Exception ex)
             {
-                _notificationService.NotifyAboutFailure("Ошибка сохранения файла. Проверьте подключение и логи.");
+                _notificationService.NotifyAboutFailure("Ошибка запуска. Проверьте подключение и логи.");
                 _logger.Error(ex, ex.Message);
-            }
-            finally
-            {
-                client.Disconnect();
+
+                droneClient.Disconnect();
             }
         }
 
@@ -295,6 +318,19 @@ namespace Glover.ViewModels
                 _config.DronePort,
                 _config.DroneUsername,
                 _config.DronePassword);
+        }
+
+        private void StopMission()
+        {
+            try
+            {
+                _startMissionCancellation.Cancel();
+            }
+            catch (Exception ex)
+            {
+                _notificationService.NotifyAboutFailure("Ошибка остановки полетного задания. Проверьте подключение и логи.");
+                _logger.Error(ex, ex.Message);
+            }
         }
     }
 }
