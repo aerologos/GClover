@@ -9,6 +9,6 @@
   "MonitorDowntimeInMs": 1000,
   "TopLeft": "FlightMissionView",
   "TopRight": "",
-  "BottomLeft": "",
-  "BottomRight": "ElevationMapView"
+  "BottomLeft": "ElevationMapView",
+  "BottomRight": ""
 }

@@ -19,6 +19,7 @@ namespace Glover.Views
     {
         public MainWindow(
             INotificationService notificationService,
+            MainWindowViewModel viewModel,
             IRegionManager regionManager,
             IFileService fileService)
         {
@@ -35,8 +36,6 @@ namespace Glover.Views
                 VerticalAlignment = VerticalAlignment.Bottom,
             };
             fileService.Target = this;
-
-            //regionManager.RegisterViewWithRegion<FlightMissionView>(PrismRegions.TopLeft);
         }
 
         protected override void OnLoaded(RoutedEventArgs e)

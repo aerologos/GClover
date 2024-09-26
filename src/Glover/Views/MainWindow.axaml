@@ -4,6 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:prism="http://prismlibrary.com/"
+        xmlns:ctrl="using:GroupBox.Avalonia.Controls"
+        xmlns:themes="using:GroupBox.Avalonia.Themes"
         xmlns:view="using:Glover.Views"
         xmlns:const="using:Glover.Const"
         xmlns:avalonia="using:Material.Icons.Avalonia"
@@ -25,27 +27,33 @@
                 ToolTip.Tip="Добавить модуль"/>
 
         <StackPanel Orientation="Vertical"
-                    Margin="20 0 0 0"
-                    Width="800"
-                    Height="600">
+                    VerticalAlignment="Top"
+                    Margin="20 20 0 0">
             <StackPanel Orientation="Horizontal">
-                <Border Width="400" Height="40" BorderThickness="1">
+                <ctrl:GroupBox Header="Top Left" 
+                               Theme="{StaticResource GroupBoxClassic}"> 
                     <ContentControl prism:RegionManager.RegionName="{x:Static const:PrismRegions.TopLeft}"/>
-                </Border>
+                </ctrl:GroupBox> 
 
-                <Border Width="400" Height="40">
+                <ctrl:GroupBox Header="Top Right"
+                               Theme="{StaticResource GroupBoxClassic}"
+                               Margin="20 0 0 0"> 
                     <ContentControl prism:RegionManager.RegionName="{x:Static const:PrismRegions.TopRight}"/>
-                </Border>
+                </ctrl:GroupBox> 
             </StackPanel>
 
-            <StackPanel Orientation="Horizontal">
-                <Border Width="400" Height="40">
+            <StackPanel Orientation="Horizontal"
+                               Margin="0 20 0 0">
+                <ctrl:GroupBox Header="Bottom Left" 
+                               Theme="{StaticResource GroupBoxClassic}"> 
                     <ContentControl prism:RegionManager.RegionName="{x:Static const:PrismRegions.BottomLeft}"/>
-                </Border>
+                </ctrl:GroupBox> 
 
-                <Border Width="400" Height="40">
+                <ctrl:GroupBox Header="Bottom Right" 
+                               Theme="{StaticResource GroupBoxClassic}"
+                               Margin="20 0 0 0"> 
                     <ContentControl prism:RegionManager.RegionName="{x:Static const:PrismRegions.BottomRight}"/>
-                </Border>
+                </ctrl:GroupBox> 
             </StackPanel>
         </StackPanel>
     </StackPanel>
