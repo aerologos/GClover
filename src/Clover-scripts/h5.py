@@ -58,7 +58,7 @@ navigate_wait(x=0, y=0, z=1, frame_id='body', auto_arm=True)
 print('Takeoff done!')
 
 try:
-    file1 = open('flight-mission.txt', 'r')
+    file1 = open('./flight-mission.txt', 'r')
     points = file1.readlines()
 
     for point in points:
@@ -77,7 +77,7 @@ try:
         rospy.sleep(3)
 
 except Exception as err:
-    print(f"Unexpected {err=}, {type(err)=}")
+    print(err)
 
 print('Perform landing')
 land()
