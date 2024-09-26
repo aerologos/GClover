@@ -1,117 +1,117 @@
-#  1. Название проекта: Glover
+#  1. Project name: Glover
 
-Платформа для создания графических интерфейсов для промышленных БПЛА;
+Platform for creating graphical interfaces for industrial UAVs
 
-**BRICS2024: UAS Challenge**, Казань
+**BRICS2024: UAS Challenge**, Kazan'
  
-####  Среда разработки:
+####  IDE:
 
-Язык программирования: **C#**
+Programming language: **C#**
 
-Фреймворк: **Avalonia UI**
+Framework: **Avalonia UI**
 
-Симуляция: **Gazebo**
+Simulation: **Gazebo**
 
-![Схема проекта](/schemas/schema.jpg)
+![Project schema](/schemas/schema.jpg)
 
-#  2. Преимущества
+#  2. Advantages
 
-- Предоставляет пользовательский интерфейс для построения блоков для взаимодействия с БПЛА.
-- Понижает интеллектуальную планку входа в процесс разработки систем управления БПЛА.
-- Предназаначен для пользователей с технической подготовкой в области беспилотных технологий, у которых отсутствует база по направлению разработки программного обеспечения.
-- Кросс-платформенность: позволяет производить контроль дроном из любой операционной системы.
+- Provides a user interface for building blocks for interacting with UAVs.
+- Lowers the intellectual bar for entry into the process of developing UAV control systems.
+- Designed for users with technical training in the field of unmanned technologies who do not have a base in the direction of software development.
+- Cross-platform: allows you to control the drone from any operating system.
  
-#  3. Роли участников команды
+#  3. Roles of team members
 
-| ФИО участника | Роль  | Обязанности |
-| -------- | ------- |------- |
-| Вальчук Александр | Капитан команды; инженер-программист | разработка программного обеспечения |
-| Чипурко Андрей | Инженер-техник; Пилот | настройки, отладка и тестирование квадрокоптера |
+| Full Name | Role  | Responsibilities |
+| -------- | -------|------- |
+| Valchuk Alexander | Team captain; Software engineer | Documentation; Programming; Simulation testing |
+| Chipurko Andrey   | Engineer-technician; Pilot      | quadcopter settings, debugging and testing     |
 
-_Роль 1. Капитан команды_ — организация работы команды в GitHub, осуществление общего руководства работой команды, распределение обязанностей и контроль соблюдения дедлайнов. 
+_Role 1. Team Captain_ — organizing the team's work in GitHub, providing overall management of the team's work, distributing responsibilities, and monitoring compliance with deadlines.
 
-_Роль 2. Инженер-программист_ -- разработка пользовательского интерфейса; написание алгоритмов интерпретации полетных заданий от программы. Работа с визуализацией, написание кода для автономного полета квадрокоптера, разработка алгоритма безопасного полета квадрокоптера.
+_Role 2. Software Engineer_ -- developing the user interface; writing algorithms for interpreting flight tasks from the program. Working with visualization, writing code for autonomous quadcopter flight, developing an algorithm for safe quadcopter flight.
 
-_Роль 3. Инженер-техник_ — моделирование и изготовление полезной нагрузки квадрокоптера, работа с датчиками, тестирование и техобслуживание и пилотирование квадрокоптера.
+_Role 3. Technician Engineer_ — modeling and manufacturing the quadcopter payload, working with sensors, testing, servicing, and piloting the quadcopter.
 
-_Роль 4. Пилот_ — организация предполетной подготовки, обслуживание БАС, осуществление визуального пилотирования при возникновении внештатных ситуаций.
+_Role 4. Pilot_ — organizing pre-flight preparation, servicing the UAS, performing visual piloting in emergency situations.
 
-# 4. Требования к системе
+# 4. System Requirements
 
-| Порядок выполнения проверки                                                            | Ожидаемые результаты |
-| -------------------------------------------------------------------------------------- | -------------------- |
-| 1. Запуск программы Glover                                                             | Выполняется успешно  |
-| 2. Добавление модуля IndoorMap в выбранный сектор                                      | Выполняется успешно  |
-| 3. Добавление модуля ElevationMap в выбранный сектор                                   | Выполняется успешно  |
-| 4. Добавление модуля ArtificialHorizon в выбранный сектор                              | Выполняется успешно  |
-| 5. Остановка программы                                                                 | Выполняется успешно  |
-| 6. Запуск программы с последними настройками                                           | Выполняется успешно  |
-| 7. Удаление настроек расположения модулей                                              | Выполняется успешно  |
-| 8. Создание полетного задания в модуле IndoorMap                                       | Выполняется успешно  |
-| 9. Проверка отображения схемы перемещения коптера по осям x-Z в модуле ElevationMap    | Выполняется успешно  |
-| 10. Сохранение полетного задания и исполняемой программы на коптер из модуля IndoorMap | Выполняется успешно  |
-| 11. Запуск полетного задания на коптере из модуля IndoorMap                            | Выполняется успешно  |
-| 12. Интерпретация и выполнение полетного задания на коптере                            | Выполняется успешно  |
+| Check Procedure                                                                                       | Expected Results     |
+| ----------------------------------------------------------------------------------------------------- | -------------------- |
+| 1. Launching the Glover program                                                                       | Successful           |
+| 2. Adding the IndoorMap module to the selected sector                                                 | Successful           |
+| 3. Adding the ElevationMap module to the selected sector                                              | Successful           |
+| 4. Adding the ArtificialHorizon module to the selected sector                                         | Successful           |
+| 5. Stopping the program                                                                               | Successful           |
+| 6. Launching the program with the latest settings                                                     | Successful           |
+| 7. Deleting module location settings                                                                  | Successful           |
+| 8. Creating a flight mission in the IndoorMap module                                                  | Successful           |
+| 9. Checking the display of the copter movement pattern along the x-Z axes in the ElevationMap module  | Successful |
+| 10. Saving the flight mission and executable program to the copter from the IndoorMap module          | Successful |
+| 11. Launching a flight mission on the copter from the IndoorMap module                                | Successful |
+| 12. Interpretation and execution of the flight task on the copter                                     | Successfully executed |
 
-# 5. Разработка 
-### Таблица задач
-| Описание задачи                                     | Ответственный | Срок выполнения | Статус     | технологии / инструменты / ПО                |
-| --------------------------------------------------- | ------------- | --------------- | ---------- | -------------------------------------------- |
-| Настройка коптера                                   | А. Чипурко    | 4 часа          | Готово     | Коптер клевер и периферия                    |
-| Проверка годности к полету в ручном режиме          | А. Чипурко    | 1 часа          | Готово     | Коптер клевер и периферия                    |
-| Проверка годности к полету в автономном режиме      | А. Чипурко    | 1 час           | Готово     | Коптер клевер и периферия                    |
-| Постановка задач, декларирование требований         | А. Вальчук    | 2 часа          | Готово     | github / vscode / markdown                   |
-| Программа для автономного полета дрона              | А. Вальчук    | 0.5 часа        | Готово     | github / vscode / python                     |
-| Каркас/дизайн программного продукта                 | А. Вальчук    | 4 часа          | Готово     | github / vscode / dotnet8 / C# / Avalonia UI |
-| Модуль построения полетного задания                 | А. Вальчук    | 4 часа          | Готово     | github / vscode / dotnet8 / C# / Avalonia UI |
-| Модуль отображения графика высот                    | А. Вальчук    | 4 часа          | Готово     | github / vscode / dotnet8 / C# / Avalonia UI |
-| Выбор высоты в модуле построения полетного задания  | А. Вальчук    | 1 час           | Готово     | github / vscode / dotnet8 / C# / Avalonia UI |
-| Программа выполнения полетного задания на дроне     | А. Вальчук    | 2 часа          | Готово     | github / vscode / python                     |
-| Автономные режимы на изменяемых полетных заданиях.  | А. Чипурко    | 1 час           | Готово     | Коптер клевер и периферия                    |
-| Сохранение полетного задания на коптер из программы | А. Вальчук    | 1 час           | Готово     | github / vscode / dotnet8 / C# / Avalonia UI |
-| Запуск полетного задания на коптере из программы    | А. Вальчук    | 1 час           | Готово     | github / vscode / dotnet8 / C# / Avalonia UI |
-| Сборка модулей на тестовом ПК под Windows           | А. Вальчук    | 2 часа          | Назначена  | github / vscode / dotnet8 / C# / Avalonia UI |
-| Модуль отображения искуственного горизонта          | А. Вальчук    | 1 час           | Готово     | github / vscode / dotnet8 / C# / Avalonia UI |
+# 5. Development 
+### Task table
+| Task description | Responsible person | Deadline | Status | technologies / tools / software |
+| --------------------------------------------------- | ------------- | -------------- | ---------- | ------------------------------------------ |
+| Copter setup | A. Chipurko | 4 hours | Done | Copter Clover and peripherals |
+| Checking the suitability for flight in manual mode | A. Chipurko | 1 hour | Done | Copter Clover and peripherals |
+| Checking the suitability for flight in autonomous mode | A. Chipurko | 1 hour | Done | Copter Clover and peripherals |
+| Setting tasks, declaring requirements | A. Valchuk | 2 hours | Done | github / vscode / markdown |
+| Program for autonomous drone flight | A. Valchuk | 0.5 hours | Done | github / vscode / python |
+| Software product framework/design | A. Valchuk | 4 hours | Done | github / vscode / dotnet8 / C# / Avalonia UI |
+| Flight task construction module | A. Valchuk | 4 hours | Done | github / vscode / dotnet8 / C# / Avalonia UI |
+| Altitude graph display module | A. Valchuk | 4 hours | Done | github / vscode / dotnet8 / C# / Avalonia UI |
+| Altitude selection in the flight task construction module | A. Valchuk | 1 hour | Done | github / vscode / dotnet8 / C# / Avalonia UI |
+| Flight task execution program on a drone | A. Valchuk | 2 hours | Done | github / vscode / python |
+| Autonomous modes on variable flight tasks. | A. Chipurko | 1 hour | Done | Clover copter and peripherals |
+| Saving a flight task for the copter from the program | A. Valchuk | 1 hour | Done | github / vscode / dotnet8 / C# / Avalonia UI |
+| Launching a flight task on the copter from the program | A. Valchuk | 1 hour | Done | github / vscode / dotnet8 / C# / Avalonia UI |
+| Building modules on a test PC under Windows | A. Valchuk | 2 hours | Assigned | github / vscode / dotnet8 / C# / Avalonia UI |
+| Artificial horizon display module | A. Valchuk | 1 hour | Done | github / vscode / dotnet8 / C# / Avalonia UI |
 
-# 6. Отладка
+# 6. Debug
 
-| Наименование требования к Системе                                                       | Отметка о наличии функции | Результат тестирования |
-| --------------------------------------------------------------------------------------- | ------------------------- | ---------------------- |
-| Модуль IndorMap служит для построениея полетных заданий по карте с Aruco-маркерами      | Готово                    | Успешно                |
-| Модуль ElevationMap служит для отображения карты высот полетного задания                | Готово                    | Успешно                |
-| Модуль ArtificialHorizon служит для демонстрации вариантов компоновки                   | Готово                    | Успешно                |
-| Модуль IndorMap позволяет сохранить полетное задание на файловую систему квадрокоптера  | Готово                    | Успешно                |
-| Модуль IndorMap позволяет произвести запуск квадрокоптера                               | Готово                    | Успешно                |
+| Name of the System requirement | Function availability mark | Test result |
+| ------------------------------------------------------------------------------------- | ------------------------- | ---------------------- |
+| The IndorMap module is used to build flight missions on a map with Aruco markers | Done | Successful |
+| The ElevationMap module is used to display the flight mission elevation map | Done | Successful |
+| The ArtificialHorizon module is used to demonstrate layout options | Done | Successful |
+| The IndorMap module allows you to save a flight mission to the quadcopter file system | Done | Successful |
+| The IndorMap module allows you to launch the quadcopter | Done | Successful |
 
-# 7. Примеры компоновки программы
+# 7. Examples of program layout
 
-#### Расстановка модулей (Пример 1)
+#### Arrangement of modules (Example 1)
 ![-](/schemas/example1.jpg)
 
-#### Расстановка модулей (Пример 2)
+#### Arrangement of modules (Example 2)
 ![-](/schemas/example2.jpg)
 
-#### Расстановка модулей (Пример 3)
+#### Arrangement of modules (Example 3)
 ![-](/schemas/example3.jpg)
 
 
-# 8. Развертывание
+# 8. Deployment
 
-### Исходный код
-а. Установите git клиент в вашей операционной системе: https://git-scm.com/downloads
-б. Скопируйте путь к репозиторию Glover: https://github.com/aerologos/Glover.git
-в. Запустите терминал git в любой удобной вам директории 
-г. Выполните следующую команду: git clone https://github.com/aerologos/Glover.git
+### Source code
+a. Install git client on your operating system: https://git-scm.com/downloads
+b. Copy the path to the Glover repository: https://github.com/aerologos/Glover.git
+c. Launch git terminal in any directory convenient for you
+d. Run the following command: git clone https://github.com/aerologos/Glover.git
 
-### Развертывание
-а. Скачайте Visual Studio Code: https://code.visualstudio.com/download
-б. Произведите установку Visual Studio Code в вашей операционной системе
-в. Запустите Visual Studio Code
-г. Откройте корневую директорию проекта Glover
-д. В меню vscode нажмите Run -> StartDebuging -> C# -> C#: Glover
-е. Подождите пока запустится программа Glover
+### Deployment
+a. Download Visual Studio Code: https://code.visualstudio.com/download
+b. Install Visual Studio Code on your operating system
+c. Launch Visual Studio Code
+d. Open the root directory of the Glover project
+e. In the vscode menu, click Run -> StartDebuging -> C# -> C#: Glover
+f. Wait for the Glover program to start
 
-### Настройка
-а. Нажмите на кнопку с изображением знака "+"
-б. В открывшемся окне выберите модуль для отображения, его расположение и нажмите "Сохранить"
-в. Повторите то же действие для всех остальных модулей
+### Setup
+a. Click the button with the "+" sign
+b. In the window that opens, select the module to display, its location and click "Save"
+c. Repeat the same action for all other modules
