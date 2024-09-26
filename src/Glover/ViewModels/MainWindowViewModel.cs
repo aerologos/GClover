@@ -49,10 +49,10 @@ namespace Glover.ViewModels
             _regionManager.RegisterViewWithRegion<ElevationMapView>(PrismRegions.BottomLeft);
             _regionManager.RegisterViewWithRegion<ElevationMapView>(PrismRegions.BottomRight);
 
-            _regionManager.RegisterViewWithRegion<FlightMissionView>(PrismRegions.TopLeft);
-            _regionManager.RegisterViewWithRegion<FlightMissionView>(PrismRegions.TopRight);
-            _regionManager.RegisterViewWithRegion<FlightMissionView>(PrismRegions.BottomLeft);
-            _regionManager.RegisterViewWithRegion<FlightMissionView>(PrismRegions.BottomRight);
+            _regionManager.RegisterViewWithRegion<IndoorMapView>(PrismRegions.TopLeft);
+            _regionManager.RegisterViewWithRegion<IndoorMapView>(PrismRegions.TopRight);
+            _regionManager.RegisterViewWithRegion<IndoorMapView>(PrismRegions.BottomLeft);
+            _regionManager.RegisterViewWithRegion<IndoorMapView>(PrismRegions.BottomRight);
 
             AddModuleCommand = new DelegateCommand(AddModule);
         }

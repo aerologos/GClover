@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Extype;
@@ -21,9 +21,9 @@ using System.Threading.Tasks;
 
 namespace Glover.ViewModels
 {
-    public class FlightMissionViewModel : ViewModelBase, INavigationAware
+    public class IndoorMapViewModel : ViewModelBase, INavigationAware
     {
-        private readonly Logger _logger = LogManager.GetLogger(nameof(FlightMissionViewModel));
+        private readonly Logger _logger = LogManager.GetLogger(nameof(IndoorMapViewModel));
         
         private readonly INotificationService _notificationService;
         private readonly IDialogService _dialogService;
@@ -60,7 +60,7 @@ namespace Glover.ViewModels
         /// </summary>
         public DelegateCommand StartMissionCommand { get; }
 
-        public FlightMissionViewModel(
+        public IndoorMapViewModel(
             INotificationService notificationService,
             IDialogService dialogService,
             IConfig config)

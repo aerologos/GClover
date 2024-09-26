@@ -7,9 +7,9 @@ using Glover.ViewModels;
 
 namespace Glover.Views
 {
-    public partial class FlightMissionView : UserControl
+    public partial class IndoorMapView : UserControl
     {
-        public FlightMissionView()
+        public IndoorMapView()
         {
             InitializeComponent();
             

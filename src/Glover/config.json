@@ -7,7 +7,7 @@
   "DronePassword": "raspberry",
   "DroneFileStorage": "/home/pi/catkin_ws/src/clover/clover/examples/",
   "MonitorDowntimeInMs": 1000,
-  "TopLeft": "FlightMissionView",
+  "TopLeft": "IndoorMapView",
   "TopRight": "",
   "BottomLeft": "ElevationMapView",
   "BottomRight": ""

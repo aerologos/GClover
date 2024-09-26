@@ -23,7 +23,7 @@ public class ModuleDialogViewModel : DialogViewModelBase
 
     private readonly string[] _allModules = 
     { 
-        nameof(FlightMissionView),
+        nameof(IndoorMapView),
         nameof(ElevationMapView)
     };
 
