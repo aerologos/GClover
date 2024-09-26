@@ -125,3 +125,14 @@ a. Click the button with the "+" sign
 b. In the window that opens, select the module to display, its location and click "Save"
 
 c. Repeat the same action for all other modules
+
+# 9. Demonstration
+
+### Drone flying
+
+Drone flying the deployed flight mission from Glover:
+https://www.youtube.com/shorts/FBkyM7M7tIY
+
+### Program demonstration
+Glover program demonstration
+https://www.youtube.com/watch?v=vpVwevA3Wz8&t=8s
