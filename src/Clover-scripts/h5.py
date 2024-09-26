@@ -13,6 +13,8 @@ from clover import srv
 from clover import long_callback
 from clover.srv import SetLEDEffect
 
+from pathlib import Path
+
 rospy.init_node('flight')
 
 get_telemetry = rospy.ServiceProxy('get_telemetry', srv.GetTelemetry)
@@ -53,7 +55,10 @@ def navigate_wait(x=0, y=0, z=0, yaw=float('nan'), speed=0.5, frame_id='', auto_
             break
         rospy.sleep(0.2)
 
-file1 = open('/home/pi/catkin_ws/src/clover/clover/examples/flight-mission.txt', 'r')
+flight_mission_file = '{0}/flight-mission.txt'.format(Path.cwd())
+print(flight_mission_file)
+
+file1 = open(flight_mission_file, 'r')
 points = file1.readlines()
 
 print('Take off and hover 1 m above the ground')
