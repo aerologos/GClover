@@ -15,6 +15,8 @@ using System.IO;
 using System.Diagnostics;
 using Renci.SshNet;
 using System.Text.RegularExpressions;
+using System.Threading;
+using System.Threading.Tasks;
 
 
 namespace Glover.ViewModels
@@ -254,7 +256,7 @@ namespace Glover.ViewModels
             }
         }
 
-        private void StartMission()
+        private async void StartMission()
         {
             var client = GetSshClient();
 
@@ -270,6 +272,8 @@ namespace Glover.ViewModels
                 string prompt = shellStream.Expect(new Regex(@"[$>]"));
 
                 shellStream.WriteLine($"/usr/bin/python3 {remotePath}");
+
+                await Task.Delay(5000);
     
                 _notificationService.NotifyAboutSuccess("Полетное задание выполняется");
             }
