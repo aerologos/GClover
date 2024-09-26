@@ -54,6 +54,13 @@ namespace Glover.ViewModels
             _regionManager.RegisterViewWithRegion<FlightMissionView>(PrismRegions.BottomLeft);
             _regionManager.RegisterViewWithRegion<FlightMissionView>(PrismRegions.BottomRight);
 
+            AddModuleCommand = new DelegateCommand(AddModule);
+        }
+
+        public override void OnContentRendered()
+        {
+            base.OnContentRendered();
+
             if (!string.IsNullOrWhiteSpace(_config.TopLeft))
                 _regionManager.RequestNavigate(PrismRegions.TopLeft, _config.TopLeft);
 
@@ -65,8 +72,6 @@ namespace Glover.ViewModels
 
             if (!string.IsNullOrWhiteSpace(_config.BottomRight))
                 _regionManager.RequestNavigate(PrismRegions.BottomRight, _config.BottomRight);
-
-            AddModuleCommand = new DelegateCommand(AddModule);
         }
 
         /// <summary>

@@ -49,6 +49,7 @@
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="8.0.0" />
     <PackageReference Include="Codenizer.Avalonia.Map" Version="0.3.0" />
     <PackageReference Include="SSH.NET" Version="2024.1.0" />
+    <PackageReference Include="BinToss.GroupBox.Avalonia" Version="1.0.0" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DomainModel\DomainModel.csproj" />

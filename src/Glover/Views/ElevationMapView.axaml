@@ -18,6 +18,7 @@
                         XAxes="{Binding XAxes}"
                         YAxes="{Binding YAxes}"
                         Opacity="0.9"
+                        Width="620"
                         Height="200">
     </lvc:CartesianChart>
 </StackPanel>
