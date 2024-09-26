@@ -61,4 +61,9 @@
     <AvaloniaResource Include="Themes\ComboBox.xaml" />
     <AvaloniaResource Include="Themes\NotificationCard.xaml" />
   </ItemGroup>
+  <ItemGroup>
+    <AvaloniaResource Include="Resources\artificial-horizon-background.png" />
+    <AvaloniaResource Include="Resources\artificial-horizon-roll-pitch.png" />
+    <AvaloniaResource Include="Resources\artificial-horizon-roll-ticks.png" />
+  </ItemGroup>
 </Project>

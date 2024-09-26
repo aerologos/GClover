@@ -1,0 +1,59 @@
+<UserControl x:Class="Glover.Views.ArtificialHorizonView"
+             xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:prism="http://prismlibrary.com/"
+             xmlns:lvc="using:LiveChartsCore.SkiaSharpView.Avalonia"
+             xmlns:avalonia="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             mc:Ignorable="d">
+    <Image Width="600"
+           Height="600">
+        <Image.Source>
+            <DrawingImage>
+                <DrawingImage.Drawing>
+                    <DrawingGroup>
+                        <DrawingGroup>
+                            <DrawingGroup>
+                                <ImageDrawing ImageSource="/Resources/artificial-horizon-background.png"
+                                              Rect="0,0,600,600" />
+
+                                <DrawingGroup.Transform>
+                                    <TransformGroup>
+                                        <RotateTransform Angle="0"
+                                                         CenterX="300"
+                                                         CenterY="300" />
+                                        <TranslateTransform Y="0" />
+                                    </TransformGroup>
+                                </DrawingGroup.Transform>
+                            </DrawingGroup>
+
+                            <DrawingGroup.ClipGeometry>
+                                <RectangleGeometry Rect="100,100,400,400"/>
+                            </DrawingGroup.ClipGeometry>
+                        </DrawingGroup>
+
+                        <DrawingGroup>
+                            <ImageDrawing ImageSource="/Resources/artificial-horizon-roll-pitch.png"
+                                          Rect="196,131,212,171"/>
+                            
+                            <DrawingGroup.Transform>
+                                <TransformGroup>
+                                    <RotateTransform Angle="0"
+                                                     CenterX="300"
+                                                     CenterY="300" />
+                                </TransformGroup>
+                            </DrawingGroup.Transform>
+                        </DrawingGroup>
+
+                        <DrawingGroup>
+                            <ImageDrawing ImageSource="/Resources/artificial-horizon-roll-ticks.png"
+                                          Rect="120,100,362,120" />
+                        </DrawingGroup>
+                    </DrawingGroup>
+                </DrawingImage.Drawing>
+            </DrawingImage>
+        </Image.Source>
+    </Image>
+</UserControl>

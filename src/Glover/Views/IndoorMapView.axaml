@@ -63,8 +63,12 @@
         </ItemsRepeater>
     </StackPanel>
 
-    <Button Content="Очистить" Margin="10 10" Command="{Binding ClearMissionCommand}" Theme="{StaticResource MaterialOutlineButton}"/>
-    <Button Content="Сохранить на коптер" Margin="10 10" Command="{Binding SaveMissionCommand}" Theme="{StaticResource MaterialOutlineButton}"/>
+    <StackPanel Orientation="Horizontal"
+                Margin="10 10">
+        <Button Content="Очистить" Command="{Binding ClearMissionCommand}" Theme="{StaticResource MaterialOutlineButton}"/>
+        <Button Content="Сохранить на коптер" Command="{Binding SaveMissionCommand}" Theme="{StaticResource MaterialOutlineButton}" Margin="5 0 0 0"/>
+    </StackPanel>
+
     <StackPanel Orientation="Horizontal"
                 Margin="10 10">
         <Button Content="Выполнить" Command="{Binding StartMissionCommand}" Theme="{StaticResource MaterialOutlineButton}"/>

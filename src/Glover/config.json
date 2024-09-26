@@ -8,7 +8,7 @@
   "DroneFileStorage": "/home/pi/catkin_ws/src/clover/clover/examples/",
   "MonitorDowntimeInMs": 1000,
   "TopLeft": "IndoorMapView",
-  "TopRight": "",
+  "TopRight": "ArtificialHorizonView",
   "BottomLeft": "ElevationMapView",
   "BottomRight": ""
 }

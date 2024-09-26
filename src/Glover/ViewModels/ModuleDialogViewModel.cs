@@ -24,7 +24,8 @@ public class ModuleDialogViewModel : DialogViewModelBase
     private readonly string[] _allModules = 
     { 
         nameof(IndoorMapView),
-        nameof(ElevationMapView)
+        nameof(ElevationMapView),
+        nameof(ArtificialHorizonView)
     };
 
     private readonly string[] _allRegions = 

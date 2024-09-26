@@ -54,6 +54,11 @@ namespace Glover.ViewModels
             _regionManager.RegisterViewWithRegion<IndoorMapView>(PrismRegions.BottomLeft);
             _regionManager.RegisterViewWithRegion<IndoorMapView>(PrismRegions.BottomRight);
 
+            _regionManager.RegisterViewWithRegion<ArtificialHorizonView>(PrismRegions.TopLeft);
+            _regionManager.RegisterViewWithRegion<ArtificialHorizonView>(PrismRegions.TopRight);
+            _regionManager.RegisterViewWithRegion<ArtificialHorizonView>(PrismRegions.BottomLeft);
+            _regionManager.RegisterViewWithRegion<ArtificialHorizonView>(PrismRegions.BottomRight);
+
             AddModuleCommand = new DelegateCommand(AddModule);
         }
 
