@@ -4,23 +4,27 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:prism="http://prismlibrary.com/"
+             xmlns:ctrl="using:GroupBox.Avalonia.Controls"
              xmlns:lvc="using:LiveChartsCore.SkiaSharpView.Avalonia"
              xmlns:avalonia="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
              prism:ViewModelLocator.AutoWireViewModel="True"
              mc:Ignorable="d">
 
-<StackPanel Orientation="Vertical">
-    <lvc:CartesianChart x:Name="ElevationMap"
-                        Foreground="Lavender"
-                        DataContext="{Binding Elevation}"
-                        Series="{Binding Series}"
-                        Title="{Binding Title}"
-                        XAxes="{Binding XAxes}"
-                        YAxes="{Binding YAxes}"
-                        Opacity="0.9"
-                        Width="620"
-                        Height="200">
-    </lvc:CartesianChart>
-</StackPanel>
+<ctrl:GroupBox Header="----------"
+                Theme="{StaticResource GroupBoxClassic}"> 
+    <StackPanel Orientation="Vertical">
+        <lvc:CartesianChart x:Name="ElevationMap"
+                            Foreground="Lavender"
+                            DataContext="{Binding Elevation}"
+                            Series="{Binding Series}"
+                            Title="{Binding Title}"
+                            XAxes="{Binding XAxes}"
+                            YAxes="{Binding YAxes}"
+                            Opacity="0.9"
+                            Width="620"
+                            Height="200">
+        </lvc:CartesianChart>
+    </StackPanel>
+</ctrl:GroupBox> 
 
 </UserControl>

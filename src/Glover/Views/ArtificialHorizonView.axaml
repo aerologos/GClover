@@ -4,12 +4,15 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:prism="http://prismlibrary.com/"
+             xmlns:ctrl="using:GroupBox.Avalonia.Controls"
              xmlns:lvc="using:LiveChartsCore.SkiaSharpView.Avalonia"
              xmlns:avalonia="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
              prism:ViewModelLocator.AutoWireViewModel="True"
              mc:Ignorable="d"
              Width="300"
              Height="300">
+<ctrl:GroupBox Header="----------" 
+                Theme="{StaticResource GroupBoxClassic}"> 
     <Image Width="300"
            Height="300">
         <Image.Source>
@@ -58,4 +61,5 @@
             </DrawingImage>
         </Image.Source>
     </Image>
+</ctrl:GroupBox> 
 </UserControl>

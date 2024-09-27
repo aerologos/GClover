@@ -6,74 +6,78 @@
              xmlns:viewModels="clr-namespace:Glover.ViewModels"
              xmlns:views="clr-namespace:Glover.Views"
              xmlns:prism="http://prismlibrary.com/"
+             xmlns:ctrl="using:GroupBox.Avalonia.Controls"
              xmlns:lvc="using:LiveChartsCore.SkiaSharpView.Avalonia"
              xmlns:avalonia="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
              prism:ViewModelLocator.AutoWireViewModel="True"
              mc:Ignorable="d">
 
-<StackPanel Orientation="Vertical">
+<ctrl:GroupBox Header="----------" 
+                Theme="{StaticResource GroupBoxClassic}"> 
+    <StackPanel Orientation="Vertical">
 
-    <StackPanel Orientation="Horizontal">
-        <ItemsRepeater ItemsSource="{Binding ArucoMarkersSet1}" Margin="0 5">
-            <ItemsRepeater.Layout>
-                <StackLayout Spacing="5"
-                            Orientation="Vertical" />
-            </ItemsRepeater.Layout>
-            <ItemsRepeater.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <Button Content="{Binding Aruco1.Number}" Foreground="Lavender" Margin="10 0 0 0" Command="{Binding $parent[views:IndoorMapView].((viewModels:IndoorMapViewModel)DataContext).AddPointCommand}" CommandParameter="{Binding Aruco1}"/>
-                        <Button Content="{Binding Aruco2.Number}" Foreground="Lavender" Margin="10 0 0 0" Command="{Binding $parent[views:IndoorMapView].((viewModels:IndoorMapViewModel)DataContext).AddPointCommand}" CommandParameter="{Binding Aruco2}"/>
-                        <Button Content="{Binding Aruco3.Number}" Foreground="Lavender" Margin="10 0 0 0" Command="{Binding $parent[views:IndoorMapView].((viewModels:IndoorMapViewModel)DataContext).AddPointCommand}" CommandParameter="{Binding Aruco3}"/>
-                    </StackPanel>
-                </DataTemplate>
-            </ItemsRepeater.ItemTemplate>
-        </ItemsRepeater>
+        <StackPanel Orientation="Horizontal">
+            <ItemsRepeater ItemsSource="{Binding ArucoMarkersSet1}" Margin="0 5">
+                <ItemsRepeater.Layout>
+                    <StackLayout Spacing="5"
+                                Orientation="Vertical" />
+                </ItemsRepeater.Layout>
+                <ItemsRepeater.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <Button Content="{Binding Aruco1.Number}" Foreground="Lavender" Margin="10 0 0 0" Command="{Binding $parent[views:IndoorMapView].((viewModels:IndoorMapViewModel)DataContext).AddPointCommand}" CommandParameter="{Binding Aruco1}"/>
+                            <Button Content="{Binding Aruco2.Number}" Foreground="Lavender" Margin="10 0 0 0" Command="{Binding $parent[views:IndoorMapView].((viewModels:IndoorMapViewModel)DataContext).AddPointCommand}" CommandParameter="{Binding Aruco2}"/>
+                            <Button Content="{Binding Aruco3.Number}" Foreground="Lavender" Margin="10 0 0 0" Command="{Binding $parent[views:IndoorMapView].((viewModels:IndoorMapViewModel)DataContext).AddPointCommand}" CommandParameter="{Binding Aruco3}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsRepeater.ItemTemplate>
+            </ItemsRepeater>
 
-        <ItemsRepeater ItemsSource="{Binding ArucoMarkersSet2}" Margin="20 5">
-            <ItemsRepeater.Layout>
-                <StackLayout Spacing="5"
-                            Orientation="Vertical" />
-            </ItemsRepeater.Layout>
-            <ItemsRepeater.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <Button Content="{Binding Aruco1.Number}" Foreground="Lavender" Margin="10 0 0 0" Command="{Binding $parent[views:IndoorMapView].((viewModels:IndoorMapViewModel)DataContext).AddPointCommand}" CommandParameter="{Binding Aruco1}"/>
-                        <Button Content="{Binding Aruco2.Number}" Foreground="Lavender" Margin="10 0 0 0" Command="{Binding $parent[views:IndoorMapView].((viewModels:IndoorMapViewModel)DataContext).AddPointCommand}" CommandParameter="{Binding Aruco2}"/>
-                        <Button Content="{Binding Aruco3.Number}" Foreground="Lavender" Margin="10 0 0 0" Command="{Binding $parent[views:IndoorMapView].((viewModels:IndoorMapViewModel)DataContext).AddPointCommand}" CommandParameter="{Binding Aruco3}"/>
-                    </StackPanel>
-                </DataTemplate>
-            </ItemsRepeater.ItemTemplate>
-        </ItemsRepeater>
+            <ItemsRepeater ItemsSource="{Binding ArucoMarkersSet2}" Margin="20 5">
+                <ItemsRepeater.Layout>
+                    <StackLayout Spacing="5"
+                                Orientation="Vertical" />
+                </ItemsRepeater.Layout>
+                <ItemsRepeater.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <Button Content="{Binding Aruco1.Number}" Foreground="Lavender" Margin="10 0 0 0" Command="{Binding $parent[views:IndoorMapView].((viewModels:IndoorMapViewModel)DataContext).AddPointCommand}" CommandParameter="{Binding Aruco1}"/>
+                            <Button Content="{Binding Aruco2.Number}" Foreground="Lavender" Margin="10 0 0 0" Command="{Binding $parent[views:IndoorMapView].((viewModels:IndoorMapViewModel)DataContext).AddPointCommand}" CommandParameter="{Binding Aruco2}"/>
+                            <Button Content="{Binding Aruco3.Number}" Foreground="Lavender" Margin="10 0 0 0" Command="{Binding $parent[views:IndoorMapView].((viewModels:IndoorMapViewModel)DataContext).AddPointCommand}" CommandParameter="{Binding Aruco3}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsRepeater.ItemTemplate>
+            </ItemsRepeater>
 
-        <ItemsRepeater ItemsSource="{Binding ArucoMarkersSet3}" Margin="20 5">
-            <ItemsRepeater.Layout>
-                <StackLayout Spacing="5"
-                             Orientation="Vertical" />
-            </ItemsRepeater.Layout>
-            <ItemsRepeater.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <Button Content="{Binding Aruco1.Number}" Foreground="Lavender" Margin="10 0 0 0" Command="{Binding $parent[views:IndoorMapView].((viewModels:IndoorMapViewModel)DataContext).AddPointCommand}" CommandParameter="{Binding Aruco1}"/>
-                        <Button Content="{Binding Aruco2.Number}" Foreground="Lavender" Margin="10 0 0 0" Command="{Binding $parent[views:IndoorMapView].((viewModels:IndoorMapViewModel)DataContext).AddPointCommand}" CommandParameter="{Binding Aruco2}"/>
-                        <Button Content="{Binding Aruco3.Number}" Foreground="Lavender" Margin="10 0 0 0" Command="{Binding $parent[views:IndoorMapView].((viewModels:IndoorMapViewModel)DataContext).AddPointCommand}" CommandParameter="{Binding Aruco3}"/>
-                    </StackPanel>
-                </DataTemplate>
-            </ItemsRepeater.ItemTemplate>
-        </ItemsRepeater>
+            <ItemsRepeater ItemsSource="{Binding ArucoMarkersSet3}" Margin="20 5">
+                <ItemsRepeater.Layout>
+                    <StackLayout Spacing="5"
+                                Orientation="Vertical" />
+                </ItemsRepeater.Layout>
+                <ItemsRepeater.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <Button Content="{Binding Aruco1.Number}" Foreground="Lavender" Margin="10 0 0 0" Command="{Binding $parent[views:IndoorMapView].((viewModels:IndoorMapViewModel)DataContext).AddPointCommand}" CommandParameter="{Binding Aruco1}"/>
+                            <Button Content="{Binding Aruco2.Number}" Foreground="Lavender" Margin="10 0 0 0" Command="{Binding $parent[views:IndoorMapView].((viewModels:IndoorMapViewModel)DataContext).AddPointCommand}" CommandParameter="{Binding Aruco2}"/>
+                            <Button Content="{Binding Aruco3.Number}" Foreground="Lavender" Margin="10 0 0 0" Command="{Binding $parent[views:IndoorMapView].((viewModels:IndoorMapViewModel)DataContext).AddPointCommand}" CommandParameter="{Binding Aruco3}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsRepeater.ItemTemplate>
+            </ItemsRepeater>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal"
+                    Margin="10 10">
+            <Button Content="Очистить" Command="{Binding ClearMissionCommand}" Theme="{StaticResource MaterialOutlineButton}"/>
+            <Button Content="Сохранить на коптер" Command="{Binding SaveMissionCommand}" Theme="{StaticResource MaterialOutlineButton}" Margin="5 0 0 0"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal"
+                    Margin="10 10">
+            <Button Content="Выполнить" Command="{Binding StartMissionCommand}" Theme="{StaticResource MaterialOutlineButton}"/>
+            <Button Content="Остановить" Command="{Binding StopMissionCommand}" Theme="{StaticResource MaterialOutlineButton}" Margin="5 0 0 0"/>
+        </StackPanel>
     </StackPanel>
-
-    <StackPanel Orientation="Horizontal"
-                Margin="10 10">
-        <Button Content="Очистить" Command="{Binding ClearMissionCommand}" Theme="{StaticResource MaterialOutlineButton}"/>
-        <Button Content="Сохранить на коптер" Command="{Binding SaveMissionCommand}" Theme="{StaticResource MaterialOutlineButton}" Margin="5 0 0 0"/>
-    </StackPanel>
-
-    <StackPanel Orientation="Horizontal"
-                Margin="10 10">
-        <Button Content="Выполнить" Command="{Binding StartMissionCommand}" Theme="{StaticResource MaterialOutlineButton}"/>
-        <Button Content="Остановить" Command="{Binding StopMissionCommand}" Theme="{StaticResource MaterialOutlineButton}" Margin="5 0 0 0"/>
-    </StackPanel>
-</StackPanel>
+</ctrl:GroupBox> 
 
 </UserControl>
